@@ -33,5 +33,8 @@ public class TestAutomation {
         productPage.addToCart();
         productPage.clickSepetimButton();
         productPage.clickSepeteGitButton();
+        productPage.sepettekiMiktariArttirVeGuncelle();
+        productPage.urunuSepettenKaldir();
+        productPage.uyariMesajiKontrol();
     }
 }
