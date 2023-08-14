@@ -13,20 +13,22 @@ public class ProductPage extends BasePage {
     private By cartButtonLocator = By.id("button-cart");
     private By sepetimButton = By.id("sprite-cart-icon");
     private By sepeteGitButton = By.id("js-cart");
+
     public ProductPage(WebDriver driver) {
         super(driver);
     }
 
     public void selectRandomProduct() {
-        List < WebElement > products = driver.findElements(By.cssSelector(".product-cr .name a"));
+        List<WebElement> products = driver.findElements(By.cssSelector(".product-cr .name a"));
 
         if (products.size() > 0) {
             Random random = new Random();
             int randomProductIndex = random.nextInt(products.size());
             WebElement randomProduct = products.get(randomProductIndex);
             randomProduct.click();
+            logger.info("Rastgele bir ürün seçildi.");
         } else {
-            System.out.println("Ürün listesi boş");
+            logger.warning("Ürün listesi boş.");
         }
     }
 
@@ -34,21 +36,20 @@ public class ProductPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cartButton = wait.until(ExpectedConditions.elementToBeClickable(cartButtonLocator));
         cartButton.click();
-
+        logger.info("Ürün sepete eklendi.");
     }
+
     public void clickSepetimButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // Sepetim butonu
         WebElement sepetimButtonElem = wait.until(ExpectedConditions.elementToBeClickable(sepetimButton));
         sepetimButtonElem.click();
+        logger.info("Sepetim butonuna tıklandı.");
     }
+
     public void clickSepeteGitButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // Sepete Git butonu
         WebElement sepeteGitButtonElem = wait.until(ExpectedConditions.elementToBeClickable(sepeteGitButton));
         sepeteGitButtonElem.click();
+        logger.info("Sepete Git butonuna tıklandı.");
     }
-
 }

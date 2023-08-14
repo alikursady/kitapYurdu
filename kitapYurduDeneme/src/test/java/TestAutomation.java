@@ -22,10 +22,8 @@ public class TestAutomation {
 
     @AfterEach
     public void tearDown() {
-        if (driver != null) {
             driver.quit();
         }
-    }
 
     @Test
     public void testProductSearchAndAddToCart() {

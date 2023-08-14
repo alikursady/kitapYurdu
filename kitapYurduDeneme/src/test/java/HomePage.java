@@ -13,11 +13,13 @@ public class HomePage extends BasePage {
 
     public void open() {
         driver.get("https://www.kitapyurdu.com/");
+        logger.info("Kitapyurdu ana sayfası açıldı.");
     }
 
     public void searchForProduct(String keyword) {
         WebElement searchBox = driver.findElement(searchInput);
         searchBox.sendKeys(keyword);
         searchBox.sendKeys(Keys.ENTER);
+        logger.info("'" + keyword + "' için arama yapıldı.");
     }
 }
