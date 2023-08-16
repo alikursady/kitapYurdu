@@ -26,7 +26,8 @@ public class ProductPage extends BasePage {
     private By sepettenKaldirButonu = By.cssSelector(".fa.fa-times.red-icon");
     private By uyariMesaji = By.xpath("//div[.='Sepetinizdeki ürünleri görmek için üye girişi yapmanız gerekmektedir.']");
 
-
+    private By productPriceLocator = By.cssSelector(".price__item");
+    private double currentProductPrice = 0;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -107,7 +108,7 @@ public class ProductPage extends BasePage {
     }
 
     public void sepettekiMiktariArttirVeGuncelle() {
-        sepettekiMiktariArttir(); // Miktarı burada artırıyoruz
+        sepettekiMiktariArttir();
         yenileButonunaTikla();
         sepetGuncelleniyorKontrol();
     }
@@ -124,7 +125,7 @@ public class ProductPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(uyariMesaji));
-            logger.info("Mesaj görüntülendi! :)");
+            logger.info("Sepetin boş olduğu kontrol edildi! :)");
         } catch (TimeoutException e) {
             logger.warning("Mesaj görüntülenmedi.");
             Assert.fail("Mesaj beklenen süre içinde görüntülenmedi.");
