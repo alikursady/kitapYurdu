@@ -26,9 +26,6 @@ public class ProductPage extends BasePage {
     private By sepettenKaldirButonu = By.cssSelector(".fa.fa-times.red-icon");
     private By uyariMesaji = By.xpath("//div[.='Sepetinizdeki ürünleri görmek için üye girişi yapmanız gerekmektedir.']");
 
-    private By productPriceLocator = By.cssSelector(".price__item");
-    private double currentProductPrice = 0;
-
     public ProductPage(WebDriver driver) {
         super(driver);
     }
