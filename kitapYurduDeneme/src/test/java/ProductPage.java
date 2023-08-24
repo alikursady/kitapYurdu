@@ -17,6 +17,7 @@ public class ProductPage extends BasePage {
     private final static Logger logger = Logger.getLogger(ProductPage.class.getName());
 
     private By productItems = By.cssSelector("div.product-cr");
+    private By productPriceLocator = By.cssSelector(".price__item");
     private By cartButtonLocator = By.id("button-cart");
     private By sepetimButton = By.id("sprite-cart-icon");
     private By sepeteGitButton = By.id("js-cart");
@@ -126,6 +127,18 @@ public class ProductPage extends BasePage {
         } catch (TimeoutException e) {
             logger.warning("Mesaj görüntülenmedi.");
             Assert.fail("Mesaj beklenen süre içinde görüntülenmedi.");
+        }
+    }
+    public String getRandomProductPrice() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement priceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productPriceLocator));
+            String price = priceElement.getText();
+            logger.info("Rastgele seçilen ürünün fiyatı: " + price);
+            return price;
+        } catch (TimeoutException e) {
+            logger.warning("Ürün fiyatı alınamadı.");
+            return null;
         }
     }
 

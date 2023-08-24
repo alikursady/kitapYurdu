@@ -51,6 +51,10 @@ public class TestAutomation {
         }
         homePage.searchForProduct(searchTerm);
         productPage.selectRandomProduct();
+        String productPrice = productPage.getRandomProductPrice(); // Fiyatı al
+        if (productPrice != null) {
+            logger.info("Rastgele seçilen ürünün fiyatı: " + productPrice);
+        }
         productPage.addToCart();
         productPage.clickSepetimButton();
         productPage.clickSepeteGitButton();
@@ -58,4 +62,5 @@ public class TestAutomation {
         productPage.urunuSepettenKaldir();
         productPage.uyariMesajiKontrol();
     }
+
 }
